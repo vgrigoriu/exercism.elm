@@ -3,7 +3,10 @@ module Bob exposing (hey)
 
 hey : String -> String
 hey remark =
-    if isYelling remark && isQuestion remark then
+    if isSilence remark then
+        "Fine. Be that way!"
+
+    else if isYelling remark && isQuestion remark then
         "Calm down, I know what I'm doing!"
 
     else if isYelling remark then
@@ -26,3 +29,10 @@ isQuestion remark =
     remark
         |> String.trim
         |> String.endsWith "?"
+
+
+isSilence : String -> Bool
+isSilence remark =
+    remark
+        |> String.trim
+        |> String.isEmpty
