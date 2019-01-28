@@ -95,20 +95,17 @@ tests =
                     Expect.equal
                         "Fine. Be that way!"
                         (Bob.hey "")
-        , skip <|
-            test "prolonged silence" <|
+        , test "prolonged silence" <|
                 \() ->
                     Expect.equal
                         "Fine. Be that way!"
                         (Bob.hey "       ")
-        , skip <|
-            test "alternate silences" <|
+        , test "alternate silences" <|
                 \() ->
                     Expect.equal
                         "Fine. Be that way!"
                         (Bob.hey "\t  \n  \t   ")
-        , skip <|
-            test "on multiple line questions" <|
+        , test "on multiple line questions" <|
                 \() ->
                     Expect.equal
                         "Whatever."
