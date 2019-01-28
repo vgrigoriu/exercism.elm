@@ -15,8 +15,7 @@ tests =
             \() ->
                 Expect.equal "Whatever."
                     (Bob.hey "Tom-ay-to, tom-aaaah-to.")
-        , skip <|
-            test "shouting" <|
+        , test "shouting" <|
                 \() ->
                     Expect.equal
                         "Whoa, chill out!"
