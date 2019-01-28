@@ -18,7 +18,7 @@ hey remark =
 
 isYelling : String -> Bool
 isYelling remark =
-    remark == String.toUpper remark
+    remark == String.toUpper remark && String.any Char.isAlpha remark
 
 
 isQuestion : String -> Bool

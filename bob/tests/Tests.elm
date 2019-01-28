@@ -55,14 +55,12 @@ tests =
                     Expect.equal
                         "Calm down, I know what I'm doing!"
                         (Bob.hey "WHAT THE HELL WERE YOU THINKING?")
-        , skip <|
-            test "shouting numbers" <|
+        , test "shouting numbers" <|
                 \() ->
                     Expect.equal
                         "Whoa, chill out!"
                         (Bob.hey "1, 2, 3 GO!")
-        , skip <|
-            test "only numbers" <|
+        , test "only numbers" <|
                 \() ->
                     Expect.equal
                         "Whatever."
