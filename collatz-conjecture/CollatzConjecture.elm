@@ -6,11 +6,17 @@ collatz start =
     if start <= 0 then
         Err "Only positive numbers are allowed"
 
-    else if start == 1 then
-        Ok 0
+    else
+        Ok <| collatzRec start 0
+
+
+collatzRec : Int -> Int -> Int
+collatzRec start acc =
+    if start == 1 then
+        acc
 
     else if modBy 2 start == 0 then
-        Result.map ((+) 1) (collatz (start // 2))
+        collatzRec (start // 2) acc + 1
 
     else
-        Result.map ((+) 1) (collatz (3 * start + 1))
+        collatzRec (3 * start + 1) acc + 1
