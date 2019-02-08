@@ -14,8 +14,7 @@ tests =
                     [ "On the first day of Christmas my true love gave to me, a Partridge in a Pear Tree."
                     ]
                     (TwelveDays.recite 1 1)
-        , skip <|
-            test "second day two turtle doves" <|
+        , test "second day two turtle doves" <|
                 \() ->
                     Expect.equal
                         [ "On the second day of Christmas my true love gave to me, two Turtle Doves, and a Partridge in a Pear Tree."
