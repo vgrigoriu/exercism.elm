@@ -14,11 +14,21 @@ allThings =
         [ ""
         , "a Partridge in a Pear Tree"
         , "two Turtle Doves"
+        , "three French Hens"
+        , "four Calling Birds"
+        , "five Gold Rings"
+        , "six Geese-a-Laying"
+        , "seven Swans-a-Swimming"
+        , "eight Maids-a-Milking"
+        , "nine Ladies Dancing"
+        , "ten Lords-a-Leaping"
+        , "eleven Pipers Piping"
+        , "twelve Drummers Drumming"
         ]
 
 
 days =
-    Array.fromList [ "", "first", "second" ]
+    Array.fromList [ "", "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth", "eleventh", "twelfth" ]
 
 
 verse : Int -> String
