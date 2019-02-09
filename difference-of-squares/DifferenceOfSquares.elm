@@ -3,14 +3,18 @@ module DifferenceOfSquares exposing (difference, squareOfSum, sumOfSquares)
 
 squareOfSum : Int -> Int
 squareOfSum n =
-    Debug.todo "Please implement this function"
+    let
+        sum =
+            n * (n + 1) // 2
+    in
+    sum * sum
 
 
 sumOfSquares : Int -> Int
 sumOfSquares n =
-    Debug.todo "Please implement this function"
+    n * (n + 1) * (2 * n + 1) // 6
 
 
 difference : Int -> Int
 difference n =
-    Debug.todo "Please implement this function"
+    squareOfSum n - sumOfSquares n
