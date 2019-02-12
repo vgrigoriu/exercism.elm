@@ -12,18 +12,18 @@ recite start stop =
 allThings =
     Array.fromList
         [ ""
-        , "a Partridge in a Pear Tree"
-        , "two Turtle Doves"
-        , "three French Hens"
-        , "four Calling Birds"
-        , "five Gold Rings"
-        , "six Geese-a-Laying"
-        , "seven Swans-a-Swimming"
-        , "eight Maids-a-Milking"
-        , "nine Ladies Dancing"
-        , "ten Lords-a-Leaping"
-        , "eleven Pipers Piping"
-        , "twelve Drummers Drumming"
+        , "a Partridge in a Pear Tree."
+        , "two Turtle Doves, and"
+        , "three French Hens,"
+        , "four Calling Birds,"
+        , "five Gold Rings,"
+        , "six Geese-a-Laying,"
+        , "seven Swans-a-Swimming,"
+        , "eight Maids-a-Milking,"
+        , "nine Ladies Dancing,"
+        , "ten Lords-a-Leaping,"
+        , "eleven Pipers Piping,"
+        , "twelve Drummers Drumming,"
         ]
 
 
@@ -42,23 +42,18 @@ verse number =
         things =
             getThings number
     in
-    "On the " ++ day ++ " day of Christmas my true love gave to me, " ++ things ++ "."
+    "On the " ++ day ++ " day of Christmas my true love gave to me, " ++ things
 
 
 getThings : Int -> String
 getThings day =
-    let
-        thing =
-            allThings
-                |> Array.get day
-                |> Maybe.withDefault "yiyiyi"
-    in
-    case day of
-        1 ->
-            thing
+    List.range 1 day
+        |> List.reverse
+        |> List.map getThing
+        |> String.join " "
 
-        2 ->
-            thing ++ ", and " ++ getThings (day - 1)
 
-        _ ->
-            thing ++ ", " ++ getThings (day - 1)
+getThing : Int -> String
+getThing day =
+    Array.get day allThings
+        |> Maybe.withDefault "???"
