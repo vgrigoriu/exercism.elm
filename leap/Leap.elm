@@ -3,4 +3,7 @@ module Leap exposing (isLeapYear)
 
 isLeapYear : Int -> Bool
 isLeapYear year =
-    (modBy 4 year == 0) && not (modBy 100 year == 0) || (modBy 400 year == 0)
+    let isDivisibleBy n =
+            modBy n year == 0
+    in
+        isDivisibleBy 4 && not (isDivisibleBy 100) || isDivisibleBy 400
