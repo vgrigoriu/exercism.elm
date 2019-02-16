@@ -44,6 +44,6 @@ orbitalPeriodInEarthYears planet =
         Neptune ->
             164.79132
 
-
+-- approximate an Earth year to 365 and 1/4 days
 earthYearInSeconds =
-    31557600
+    60 * 60 * 24 * 365.25
