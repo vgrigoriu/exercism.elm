@@ -10,34 +10,24 @@ tests =
     describe "ScrabbleScore"
         [ test "lowercase letter" <|
             \() -> Expect.equal 1 (scoreWord "a")
-        , skip <|
-            test "uppercase letter" <|
+        , test "uppercase letter" <|
                 \() -> Expect.equal 1 (scoreWord "A")
-        , skip <|
-            test "valuable letter" <|
+        , test "valuable letter" <|
                 \() -> Expect.equal 4 (scoreWord "f")
-        , skip <|
-            test "short word" <|
+        , test "short word" <|
                 \() -> Expect.equal 2 (scoreWord "at")
-        , skip <|
-            test "short, valuable word" <|
+        , test "short, valuable word" <|
                 \() -> Expect.equal 12 (scoreWord "zoo")
-        , skip <|
-            test "medium word" <|
+        , test "medium word" <|
                 \() -> Expect.equal 6 (scoreWord "street")
-        , skip <|
-            test "medium, valuable word" <|
+        , test "medium, valuable word" <|
                 \() -> Expect.equal 22 (scoreWord "quirky")
-        , skip <|
-            test "long, mixed-case word" <|
+        , test "long, mixed-case word" <|
                 \() -> Expect.equal 41 (scoreWord "OxyphenButazone")
-        , skip <|
-            test "english-like word" <|
+        , test "english-like word" <|
                 \() -> Expect.equal 8 (scoreWord "pinata")
-        , skip <|
-            test "non-english letter is not scored" <|
+        , test "non-english letter is not scored" <|
                 \() -> Expect.equal 7 (scoreWord "piñata")
-        , skip <|
-            test "empty input" <|
+        , test "empty input" <|
                 \() -> Expect.equal 0 (scoreWord "")
         ]
