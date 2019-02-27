@@ -32,19 +32,18 @@ toDna nucleotide =
     case nucleotide of
         'T' ->
             DnaT
-    
+
         'A' ->
             DnaA
 
         'G' ->
             DnaG
-    
+
         'C' ->
             DnaC
 
         _ ->
             InvalidDna nucleotide
-
 
 
 complement : Dna -> Rna
@@ -65,12 +64,13 @@ complement nucleotide =
         InvalidDna c ->
             InvalidRna c
 
+
 fromRna : Rna -> Char
 fromRna rna =
     case rna of
         RnaA ->
             'A'
-    
+
         RnaU ->
             'U'
 
