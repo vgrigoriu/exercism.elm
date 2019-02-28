@@ -6,7 +6,6 @@ type Dna
     | DnaA
     | DnaG
     | DnaC
-    | InvalidDna Char
 
 
 type Rna
@@ -14,36 +13,51 @@ type Rna
     | RnaU
     | RnaC
     | RnaG
-    | InvalidRna Char
 
 
 toRNA : String -> Result Char String
 toRNA =
-    String.toList
-        >> List.map toDna
-        >> List.map complement
-        >> List.map fromRna
-        >> String.fromList
-        >> Ok
+    toDna2
+        >> Result.map (List.map complement)
+        >> Result.map (List.map fromRna)
+        >> Result.map String.fromList
 
 
-toDna : Char -> Dna
+toDna2 : String -> Result Char (List Dna)
+toDna2 str =
+    str
+        |> String.toList
+        |> List.map toDna
+        |> List.foldr extractResult (Ok [])
+
+
+extractResult : Result error value -> Result error (List value) -> Result error (List value)
+extractResult maybeItem maybeList =
+    case maybeItem of
+        Ok item ->
+            Result.map ((::) item) maybeList
+
+        Err err ->
+            Err err
+
+
+toDna : Char -> Result Char Dna
 toDna nucleotide =
     case nucleotide of
         'T' ->
-            DnaT
+            Ok DnaT
 
         'A' ->
-            DnaA
+            Ok DnaA
 
         'G' ->
-            DnaG
+            Ok DnaG
 
         'C' ->
-            DnaC
+            Ok DnaC
 
         _ ->
-            InvalidDna nucleotide
+            Err nucleotide
 
 
 complement : Dna -> Rna
@@ -61,9 +75,6 @@ complement nucleotide =
         DnaC ->
             RnaG
 
-        InvalidDna c ->
-            InvalidRna c
-
 
 fromRna : Rna -> Char
 fromRna rna =
@@ -79,6 +90,3 @@ fromRna rna =
 
         RnaG ->
             'G'
-
-        InvalidRna c ->
-            c
