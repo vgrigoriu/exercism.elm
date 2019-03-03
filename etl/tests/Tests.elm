@@ -16,8 +16,7 @@ tests =
                     (Etl.transform <|
                         Dict.fromList [ ( 1, [ "A" ] ) ]
                     )
-        , skip <|
-            test "single score with multiple letters" <|
+        , test "single score with multiple letters" <|
                 \() ->
                     Expect.equal
                         (Dict.fromList
@@ -33,8 +32,7 @@ tests =
                                 [ ( 1, [ "A", "E", "I", "O", "U" ] )
                                 ]
                         )
-        , skip <|
-            test "multiple scores with multiple letters" <|
+        , test "multiple scores with multiple letters" <|
                 \() ->
                     Expect.equal
                         (Dict.fromList
@@ -50,8 +48,7 @@ tests =
                                 , ( 2, [ "D", "G" ] )
                                 ]
                         )
-        , skip <|
-            test "multiple scores with differing numbers of letters" <|
+        , test "multiple scores with differing numbers of letters" <|
                 \() ->
                     Expect.equal
                         (Dict.fromList
