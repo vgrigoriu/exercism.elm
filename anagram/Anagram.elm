@@ -6,6 +6,7 @@ detect word =
     List.filter (isAnagram word)
 
 
+isAnagram : String -> String -> Bool
 isAnagram word1 word2 =
     let
         lowerWord1 =
