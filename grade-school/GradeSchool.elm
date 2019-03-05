@@ -17,19 +17,30 @@ type alias School =
 
 empty : School
 empty =
-    Debug.todo "Please implement this function"
+    Dict.empty
 
 
 addStudent : Grade -> Student -> School -> School
-addStudent grade student school =
-    Debug.todo "Please implement this function"
+addStudent grade student =
+    Dict.update grade (addSorted student)
 
 
 studentsInGrade : Grade -> School -> List Student
-studentsInGrade grade school =
-    Debug.todo "Please implement this function"
+studentsInGrade grade =
+    Dict.get grade
+        >> Maybe.withDefault []
 
 
 allStudents : School -> List ( Grade, List Student )
-allStudents school =
-    Debug.todo "Please implement this function"
+allStudents =
+    Dict.toList
+
+
+addSorted : comparable -> Maybe (List comparable) -> Maybe (List comparable)
+addSorted item maybeList =
+    case maybeList of
+        Just list ->
+            Just (item :: list |> List.sort)
+
+        Nothing ->
+            Just (List.singleton item)
