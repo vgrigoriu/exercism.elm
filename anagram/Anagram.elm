@@ -3,22 +3,22 @@ module Anagram exposing (detect)
 
 detect : String -> List String -> List String
 detect word =
+    List.filter (isAnagram word)
+
+
+isAnagram word1 word2 =
     let
-        sortedWord =
-            sortLetters word
+        lowerWord1 =
+            String.toLower word1
 
-        lowerWord =
-            String.toLower word
-
-        isAnagram candidate =
-            String.toLower candidate /= lowerWord && sortedWord == sortLetters candidate
+        lowerWord2 =
+            String.toLower word2
     in
-    List.filter isAnagram
+    lowerWord1 /= lowerWord2 && sortLetters lowerWord1 == sortLetters lowerWord2
 
 
 sortLetters : String -> String
 sortLetters =
     String.toList
-        >> List.map Char.toLower
         >> List.sort
         >> String.fromList
