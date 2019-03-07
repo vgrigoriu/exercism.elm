@@ -12,7 +12,7 @@ raindrops : Int -> String
 raindrops number =
     let
         result =
-            x number
+            convert number
     in
     case result of
         "" ->
@@ -22,13 +22,13 @@ raindrops number =
             result
 
 
-x : Int -> String
-x number =
-    Dict.foldl (f number) "" factors
+convert : Int -> String
+convert number =
+    Dict.foldl (appendIfDivisible number) "" factors
 
 
-f : Int -> Int -> String -> String -> String
-f number factor output result =
+appendIfDivisible : Int -> Int -> String -> String -> String
+appendIfDivisible number factor output result =
     case modBy factor number of
         0 ->
             String.append result output
