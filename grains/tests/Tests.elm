@@ -12,26 +12,19 @@ tests =
         [ describe "square"
             [ test "of 1" <|
                 \() -> Expect.equal (Just 1) (square 1)
-            , skip <|
-                test "of 2" <|
+            , test "of 2" <|
                     \() -> Expect.equal (Just 2) (square 2)
-            , skip <|
-                test "of 3" <|
+            , test "of 3" <|
                     \() -> Expect.equal (Just 4) (square 3)
-            , skip <|
-                test "of 4" <|
+            , test "of 4" <|
                     \() -> Expect.equal (Just 8) (square 4)
-            , skip <|
-                test "of 16" <|
+            , test "of 16" <|
                     \() -> Expect.equal (Just 32768) (square 16)
-            , skip <|
-                test "of 32" <|
+            , test "of 32" <|
                     \() -> Expect.equal (Just 2147483648) (square 32)
-            , skip <|
-                test "square 0 raises an exception" <|
+            , test "square 0 raises an exception" <|
                     \() -> Expect.equal Nothing (square 0)
-            , skip <|
-                test "negative square raises an exception" <|
+            , test "negative square raises an exception" <|
                     \() -> Expect.equal Nothing (square -1)
 
             {-
