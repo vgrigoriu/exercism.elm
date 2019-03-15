@@ -3,16 +3,15 @@ module Raindrops exposing (raindrops)
 import Dict
 
 
-factors : Dict.Dict Int String
-factors =
-    Dict.fromList [ ( 3, "Pling" ), ( 5, "Plang" ), ( 7, "Plong" ) ]
+factorsToWords =
+    [ ( 3, "Pling" ), ( 5, "Plang" ), ( 7, "Plong" ) ]
 
 
 raindrops : Int -> String
 raindrops number =
     let
         result =
-            convert number
+            convertNumberToFactorWords number
     in
     case result of
         "" ->
@@ -22,16 +21,16 @@ raindrops number =
             result
 
 
-convert : Int -> String
-convert number =
-    Dict.foldl (appendIfDivisible number) "" factors
+convertNumberToFactorWords : Int -> String
+convertNumberToFactorWords number =
+    List.foldl (appendIfDivisible number) "" factorsToWords
 
 
-appendIfDivisible : Int -> Int -> String -> String -> String
-appendIfDivisible number factor output result =
+appendIfDivisible : Int -> ( Int, String ) -> String -> String
+appendIfDivisible number ( factor, word ) result =
     case modBy factor number of
         0 ->
-            String.append result output
+            String.append result word
 
         _ ->
             result
