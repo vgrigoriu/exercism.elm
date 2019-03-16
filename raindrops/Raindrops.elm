@@ -1,8 +1,7 @@
 module Raindrops exposing (raindrops)
 
-import Dict
 
-
+factorsToWords : List ( Int, String )
 factorsToWords =
     [ ( 3, "Pling" ), ( 5, "Plang" ), ( 7, "Plong" ) ]
 
