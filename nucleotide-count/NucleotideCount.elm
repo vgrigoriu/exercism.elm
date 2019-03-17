@@ -11,8 +11,7 @@ type alias NucleotideCounts =
 
 nucleotideCounts : String -> NucleotideCounts
 nucleotideCounts =
-    String.toList
-        >> List.foldr increment { a = 0, t = 0, c = 0, g = 0 }
+    String.foldl increment zeroes
 
 
 increment : Char -> NucleotideCounts -> NucleotideCounts
@@ -32,3 +31,8 @@ increment nucleotide counts =
 
         _ ->
             counts
+
+
+zeroes : NucleotideCounts
+zeroes =
+    { a = 0, t = 0, c = 0, g = 0 }
