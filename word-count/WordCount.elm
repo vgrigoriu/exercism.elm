@@ -1,7 +1,6 @@
 module WordCount exposing (wordCount)
 
 import Dict exposing (Dict)
-import Regex
 
 
 wordCount : String -> Dict String Int
@@ -9,6 +8,7 @@ wordCount =
     normalize
         >> String.trim
         >> String.split " "
+        >> List.filter ((/=) "")
         >> List.foldl count Dict.empty
 
 
@@ -24,10 +24,11 @@ inc =
         >> Just
 
 
-normalize sentence =
-    case Regex.fromString "[:!&@$%^, ]+" of
-        Just regex ->
-            Regex.replace regex (\_ -> " ") sentence
+normalize : String -> String
+normalize =
+    String.filter (not << isSeparator)
 
-        Nothing ->
-            sentence
+
+isSeparator : Char -> Bool
+isSeparator c =
+    String.any (\sep -> c == sep) ":!&@$%^,"
